@@ -29,7 +29,7 @@ public class PieRuleFrame {
         yes.addActionListener(actionEvent -> {
             Rules.apply_pie_rule(game);
             game.setPieRule(true);
-            Controller.switchPlayer(game);
+            game.getCurrent_player().swapControl(game.getOther_player());
 
             if(!boardFrame.isSingle_Player) boardFrame.boardCellClick(AI_Logic.chooseRandomCoordinates(game.getBoard()));
             boardFrame.setEnabled(true);

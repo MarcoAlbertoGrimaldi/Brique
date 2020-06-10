@@ -28,7 +28,7 @@ public interface GameFlow {
         return coordinates;
     }
 
-    default void make_move(Board board, Coordinates coordinates, Player current, Player other) {
+    default ArrayList<Coordinates> make_move(Board board, Coordinates coordinates, Player current, Player other) {
         board.getCell(coordinates).setState(current.getControl().toState());
         ArrayList<Coordinates> escorts = Rules.escort_rules(board, coordinates, current.getControl().toState());
         current.getGraph().update_graph(coordinates, board);
@@ -36,5 +36,7 @@ public interface GameFlow {
             current.getGraph().update_graph(escort, board);
             other.getGraph().restore_graph(escort, board);
         }
+        escorts.add(coordinates);
+        return escorts;
     }
 }

@@ -7,7 +7,6 @@ import Logic.AI_Logic;
 import Logic.Controller;
 import Data.Game;
 import Data.PieceColor;
-import Logic.Turn;
 
 import javax.swing.*;
 import java.awt.*;
@@ -108,8 +107,7 @@ public class BoardFrame extends JFrame implements MouseListener {
     void boardCellClick(Coordinates coordinates){
 
         game.increaseMoveCounter();
-
-        ArrayList<Coordinates> toDraw = game.;
+        ArrayList<Coordinates> toDraw = game.make_move(game.getBoard(), coordinates,game.getCurrent_player(), game.getOther_player());
         for(Coordinates coordinate : toDraw){
             CellPanels.get(coordinate.getRow() * 15 + coordinate.getCol()).setState(game.getCurrent_player().getControl());
             CellPanels.get(coordinate.getRow() * 15 + coordinate.getCol()).repaint();

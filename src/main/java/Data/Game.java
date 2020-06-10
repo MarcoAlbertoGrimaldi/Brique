@@ -20,7 +20,6 @@ public class Game implements GameFlow {
 
 
     public void play() {
-
     }
 
     public boolean isSinglePlayer() {
