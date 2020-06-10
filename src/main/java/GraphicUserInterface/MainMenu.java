@@ -1,6 +1,5 @@
 package GraphicUserInterface;
 
-import Data.Board;
 import Data.Settings;
 
 import javax.imageio.ImageIO;
@@ -21,7 +20,7 @@ public class MainMenu extends JFrame {
         mainMenu.setSize(Settings.getResolution());
         mainMenu.setLocationRelativeTo(null);
 
-        BufferedImage myImage = ImageIO.read(new File("brique.jpg"));
+        BufferedImage myImage = ImageIO.read(new File("src/main/resources/brique.jpg"));
         mainMenu.setContentPane(new ImagePanel(myImage));
 
         mainMenu.setLayout(new GridBagLayout());

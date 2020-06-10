@@ -1,13 +1,14 @@
 package CommandLine;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public interface InputInterface {
 
     Scanner scanner = new Scanner(System.in);
 
-    default boolean isValid(String input, String pattern){
-        return input.matches(pattern);
+    default boolean isValid(String input, String pattern) {
+        return Pattern.matches(pattern, input);
     }
 
     default String getInput(String request_msg, String err_msg, String pattern){

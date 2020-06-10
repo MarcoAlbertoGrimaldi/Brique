@@ -3,8 +3,8 @@ package CommandLine;
 public class PlayerInputHandler implements InputInterface {
 
     String player_request_msg = "Type you nickname:";
-    String player_err_msg = null;
-    String player_pattern = "[*]";
+    String player_err_msg = "Unexpected error";
+    String player_pattern = "\\w";
 
     String pie_rule_request_msg = "If you want to apply the pie rule, type '1'; otherwise type '0'.";
     String pie_rule_err_msg = "Please type '0' or '1'.";
@@ -12,7 +12,7 @@ public class PlayerInputHandler implements InputInterface {
 
     String coordinate_request_msg = "Insert coordinates or type 'res' to resign:";
     String coordinate_err_msg = "Not valid, please insert again (a-o and 1-15, e.g. f3)";
-    String coordinate_pattern = "[a-o][1-9]|[a-o]1[0-5]";
+    String coordinate_pattern = "[a-o][1-9]|[a-o]1[0-5]|res";
 
     public String getPlayer_request_msg() {
         return player_request_msg;

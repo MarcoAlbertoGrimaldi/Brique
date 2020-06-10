@@ -122,7 +122,7 @@ public class BoardFrame extends JFrame implements MouseListener {
         Coordinates coordinates = new Coordinates((mouseEvent.getY()-30)/(Settings.getResolution().height/15), (mouseEvent.getX()-7)/(Settings.getResolution().width/15));
         if(Controller.areEmpty(game.getBoard(), coordinates)) {
             boardCellClick(new Coordinates((mouseEvent.getY()-30)/(Settings.getResolution().height/15), (mouseEvent.getX()-7)/(Settings.getResolution().width/15)));
-            if(!isSingle_Player && !Controller.check_victory(game.getOther_player().getGraph())) {
+            if(isSingle_Player && !Controller.check_victory(game.getOther_player().getGraph())) {
                 boardCellClick(AI_Logic.chooseRandomCoordinates(game.getBoard()));
             }
             if(Controller.check_victory(game.getOther_player().getGraph())){

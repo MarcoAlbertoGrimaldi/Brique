@@ -50,15 +50,8 @@ public class Rules  {
 
 
     public static void apply_pie_rule(Game game) {
-        Controller.swapControl(game.getPlayer_1(), game.getPlayer_2());
-        Controller.swapGraphs(game.getPlayer_1(), game.getPlayer_2());
-    }
-
-
-    public static void Pie_rule_cli(Player p1, Player p2) {
-        PieceColor temp = p1.getControl();
-        p1.setControl(p2.getControl());
-        p2.setControl(temp);
+        game.getPlayer_1().swapControl(game.getPlayer_2());
+        game.getPlayer_1().swapGraphs(game.getPlayer_2());
     }
 }
 
