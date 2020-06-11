@@ -17,12 +17,13 @@ import java.util.ArrayList;
 
 public class BoardFrame extends JFrame implements MouseListener {
 
-    boolean isSingle_Player;
-    JFrame board;
-    String player1Name, player2Name;
-    Dimension dimension;
-    Game game;
-    ArrayList<CellPanel> CellPanels = new ArrayList<>();
+    final boolean isSingle_Player;
+    final JFrame board;
+    final String player1Name;
+    final String player2Name;
+    final Dimension dimension;
+    final Game game;
+    final ArrayList<CellPanel> CellPanels = new ArrayList<>();
 
     BoardFrame(boolean isSingle_Player){
 
@@ -54,14 +55,14 @@ public class BoardFrame extends JFrame implements MouseListener {
                 board.add(CellPanels.get(i * 15 + j));
             }
         }
-
-        board.addMouseListener(this);
-        board.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
         if (game.getPlayer_1().getControl()==PieceColor.WHITE && isSingle_Player) {
             boardCellClick(AI_Logic.chooseRandomCoordinates(game.getBoard()));
+
             new PieRuleFrame(board, game, this);
+            board.setVisible(true);
         }
+        board.addMouseListener(this);
+        board.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         board.addWindowListener(new WindowListener() {
             @Override
@@ -101,8 +102,11 @@ public class BoardFrame extends JFrame implements MouseListener {
             CellPanels.get(coordinate.getRow() * 15 + coordinate.getCol()).setState(game.getCurrent_player().getControl());
             CellPanels.get(coordinate.getRow() * 15 + coordinate.getCol()).repaint();
         }
-        if (!isSingle_Player && game.getMove_counter()==1) new PieRuleFrame(board, game,this);
-        game.getCurrent_player().swapControl(game.getOther_player());
+        if (!isSingle_Player && game.getMove_counter()==1){
+            board.setEnabled(false);
+            new PieRuleFrame(board, game,this);
+        }
+        game.getCurrent_player().switchPlayer(game.getOther_player());
     }
 
 
@@ -113,12 +117,12 @@ public class BoardFrame extends JFrame implements MouseListener {
         Coordinates coordinates = new Coordinates(row, col);
         if(game.getBoard().areEmpty(coordinates)) {
             boardCellClick(coordinates);
-            if(isSingle_Player && !game.check_victory(game.getOther_player().getGraph())) {
-                boardCellClick(AI_Logic.chooseRandomCoordinates(game.getBoard()));
-            }
             if(game.check_victory(game.getOther_player().getGraph())){
-                new VictoryFrame(game.getOther_player().getName(), board);
                 board.setEnabled(false);
+                new VictoryFrame(game.getOther_player().getName(), board);
+            }
+            if(isSingle_Player) {
+                boardCellClick(AI_Logic.chooseRandomCoordinates(game.getBoard()));
             }
         }
     }

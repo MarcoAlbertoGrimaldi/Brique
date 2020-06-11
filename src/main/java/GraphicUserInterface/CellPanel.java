@@ -9,11 +9,12 @@ import java.awt.*;
 
 public class CellPanel extends JPanel {
 
-    JPanel cell;
-    Dimension dimension = new Dimension(Settings.getResolution().width/15, Settings.getResolution().height/15);
-    int row, col;
+    final JPanel cell;
+    final Dimension dimension = new Dimension(Settings.getResolution().width/15, Settings.getResolution().height/15);
+    final int row;
+    final int col;
     State state = State.EMPTY;
-    double ratio = Settings.getRatio();
+    final double ratio = Settings.getRatio();
 
     public CellPanel(int i, int j) {
         this.row = i;

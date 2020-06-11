@@ -2,10 +2,10 @@ package CommandLine;
 
 public class Menu {
 
-    String menuOptions;
-    String req_msg = "Type the corresponding number to choose an option.";
-    String err_message = "Not valid, please type a number between 0 and 3:";
-    String pattern = "[0-3]";
+    final String menuOptions;
+    final String req_msg = "Type the corresponding number to choose an option.";
+    final String err_message = "Not valid, please type a number between 0 and 3:";
+    final String pattern = "[0-3]";
 
     public Menu() {
         String newLine = System.getProperty("line.separator");

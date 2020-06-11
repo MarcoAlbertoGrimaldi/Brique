@@ -10,7 +10,8 @@ import java.awt.event.WindowListener;
 
 public class PieRuleFrame {
 
-    JButton yes, no;
+    final JButton yes;
+    final JButton no;
 
     public PieRuleFrame(JFrame board, Game game, BoardFrame boardFrame) {
         JFrame pieRule = new JFrame("Pie Rule");

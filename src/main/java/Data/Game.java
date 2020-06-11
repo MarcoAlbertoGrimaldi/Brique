@@ -18,13 +18,14 @@ public class Game implements GameFlow {
         board = new Board();
     }
 
-
     public void play() {
     }
 
-    public boolean isSinglePlayer() {
-        return isSinglePlayer;
-    }
+// --Commented out by Inspection START (11/06/2020 10:06):
+//    public boolean isSinglePlayer() {
+//        return isSinglePlayer;
+//    }
+// --Commented out by Inspection STOP (11/06/2020 10:06)
 
     public void setPieRule(boolean pieRule) {
         this.pieRule = pieRule;
@@ -34,9 +35,11 @@ public class Game implements GameFlow {
         return player_1;
     }
 
-    public Player getPlayer_2() {
-        return player_2;
-    }
+// --Commented out by Inspection START (11/06/2020 10:06):
+//    public Player getPlayer_2() {
+//        return player_2;
+//    }
+// --Commented out by Inspection STOP (11/06/2020 10:06)
 
     public Player getCurrent_player(){
         if (player_1.isCurrent()) return player_1;

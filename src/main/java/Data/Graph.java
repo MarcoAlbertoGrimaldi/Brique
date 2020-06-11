@@ -59,7 +59,7 @@ public class Graph {
         while (queue.size() != 0) {
             s = queue.poll();
             i = adjacencyList.get(s).listIterator();
-            int next = 0;
+            int next;
             while (i.hasNext()) {
                 next = i.next();
                 if (next == d) {
@@ -94,7 +94,7 @@ public class Graph {
 
         State state = pieceColor.toState();
 
-        ArrayList<Coordinates> neighbours = new ArrayList<Coordinates>();
+        ArrayList<Coordinates> neighbours = new ArrayList<>();
         int row = coordinates.getRow();
         int col = coordinates.getCol();
 
@@ -110,7 +110,7 @@ public class Graph {
 
         State state = pieceColor.toState();
 
-        ArrayList<Coordinates> opponents = new ArrayList<Coordinates>();
+        ArrayList<Coordinates> opponents = new ArrayList<>();
         int row = coordinates.getRow();
         int col = coordinates.getCol();
 

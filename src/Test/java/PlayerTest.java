@@ -2,7 +2,6 @@
 
 import Data.PieceColor;
 import Data.Player;
-import Logic.*;
 import org.junit.Test;
 import org.junit.Assert;
 

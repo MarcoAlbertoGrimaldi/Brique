@@ -13,7 +13,7 @@ public class MainMenu extends JFrame {
 
     static JLabel version;
     static JButton singlePlayer, multiPlayer, settings, quit;
-    static JFrame mainMenu = new JFrame("Brique");
+    static final JFrame mainMenu = new JFrame("Brique");
 
     public MainMenu() throws IOException {
 

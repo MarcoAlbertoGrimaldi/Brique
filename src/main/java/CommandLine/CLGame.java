@@ -17,7 +17,7 @@ public class CLGame extends Game implements OutputInterface {
     @Override
     public void play() {
         super.play();
-        if(getPlayer_1().isHuman()) printBoard(getBoard());
+        if(getCurrent_player().isHuman()) printBoard(getBoard());
         boolean victory = false;
         Coordinates coordinates;
 
@@ -31,24 +31,24 @@ public class CLGame extends Game implements OutputInterface {
                     coordinates = new Coordinates(15 - Integer.parseInt(input_move.substring(1)), input_move.charAt(0) - 'a');
                 }
             }
-            else coordinates = AI_Logic.chooseRandomCoordinates(board);
-            increaseMoveCounter();
+            else {
+                coordinates = AI_Logic.chooseRandomCoordinates(board);
+                System.out.println(coordinates.toString());
+            }
 
+            increaseMoveCounter();
             make_move(board, coordinates, getCurrent_player(), getOther_player());
 
-            if(getCurrent_player().isResigned()){
-                printResignedMessage(getCurrent_player().getName());
-                break;
+            if(move_counter==1 && getOther_player().isHuman()){
+                String pie_rule = playerInputHandler.getInput(playerInputHandler.pie_rule_request_msg, playerInputHandler.pie_rule_err_msg, playerInputHandler.pie_rule_pattern);
+                if(pie_rule.equals("1")) {
+                    pieRule = true;
+                    apply_pie_rule(player_1, player_2);
+                }
             }
+
             printMove(String.valueOf(move_counter), getCurrent_player().getName(), getCurrent_player().getControl().toString());
             printBoard(board);
-
-            if(move_counter==1){
-                getCurrent_player().switchPlayer(getOther_player());
-                String pie_rule = playerInputHandler.getInput(playerInputHandler.pie_rule_request_msg, playerInputHandler.pie_rule_err_msg, playerInputHandler.pie_rule_pattern);
-                if(pie_rule.equals("1"))  pieRule = true;
-                apply_pie_rule(player_1, player_2);
-            }
 
             if(move_counter >= 28){
                 victory = check_victory(getCurrent_player().getGraph());

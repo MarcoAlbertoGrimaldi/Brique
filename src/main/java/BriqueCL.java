@@ -27,7 +27,7 @@ public class BriqueCL implements LaunchGame {
                     break;
                 case "1":
                     p1_name = getName(playerInputHandler);
-                    game = new CLGame(new Player(PieceColor.WHITE), new Player(PieceColor.BLACK, p1_name), true);
+                    game = new CLGame(new Player(PieceColor.BLACK), new Player(PieceColor.WHITE, p1_name), true);
                     game.play();
                     break;
                 case "2":
