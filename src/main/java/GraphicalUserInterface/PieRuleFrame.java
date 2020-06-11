@@ -1,4 +1,4 @@
-package GraphicUserInterface;
+package GraphicalUserInterface;
 
 import Logic.AI_Logic;
 import Data.Game;

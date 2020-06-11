@@ -1,4 +1,4 @@
-import GraphicUserInterface.MainMenu;
+import GraphicalUserInterface.MainMenu;
 
 import javax.swing.*;
 import java.io.IOException;

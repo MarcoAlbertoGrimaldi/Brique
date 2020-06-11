@@ -1,4 +1,4 @@
-package GraphicUserInterface;
+package GraphicalUserInterface;
 
 import javax.swing.*;
 import java.awt.*;
