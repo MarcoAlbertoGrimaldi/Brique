@@ -4,7 +4,6 @@ import Data.Coordinates;
 import Data.Player;
 import Data.Settings;
 import Logic.AI_Logic;
-import Logic.Controller;
 import Data.Game;
 import Data.PieceColor;
 
@@ -66,9 +65,7 @@ public class BoardFrame extends JFrame implements MouseListener {
 
         board.addWindowListener(new WindowListener() {
             @Override
-            public void windowOpened(WindowEvent windowEvent) {
-
-            }
+            public void windowOpened(WindowEvent windowEvent) {}
 
             @Override
             public void windowClosing(WindowEvent windowEvent) {
@@ -81,24 +78,16 @@ public class BoardFrame extends JFrame implements MouseListener {
             }
 
             @Override
-            public void windowIconified(WindowEvent windowEvent) {
-
-            }
+            public void windowIconified(WindowEvent windowEvent) {}
 
             @Override
-            public void windowDeiconified(WindowEvent windowEvent) {
-
-            }
+            public void windowDeiconified(WindowEvent windowEvent) {}
 
             @Override
-            public void windowActivated(WindowEvent windowEvent) {
-
-            }
+            public void windowActivated(WindowEvent windowEvent) {}
 
             @Override
-            public void windowDeactivated(WindowEvent windowEvent) {
-
-            }
+            public void windowDeactivated(WindowEvent windowEvent) {}
         });
 
         board.setVisible(true);
@@ -112,20 +101,22 @@ public class BoardFrame extends JFrame implements MouseListener {
             CellPanels.get(coordinate.getRow() * 15 + coordinate.getCol()).setState(game.getCurrent_player().getControl());
             CellPanels.get(coordinate.getRow() * 15 + coordinate.getCol()).repaint();
         }
-        if (isSingle_Player && game.getMove_counter()==1) new PieRuleFrame(board, game,this);
+        if (!isSingle_Player && game.getMove_counter()==1) new PieRuleFrame(board, game,this);
         game.getCurrent_player().swapControl(game.getOther_player());
     }
 
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        Coordinates coordinates = new Coordinates((mouseEvent.getY()-30)/(Settings.getResolution().height/15), (mouseEvent.getX()-7)/(Settings.getResolution().width/15));
-        if(Controller.areEmpty(game.getBoard(), coordinates)) {
-            boardCellClick(new Coordinates((mouseEvent.getY()-30)/(Settings.getResolution().height/15), (mouseEvent.getX()-7)/(Settings.getResolution().width/15)));
-            if(isSingle_Player && !Controller.check_victory(game.getOther_player().getGraph())) {
+        int row = (mouseEvent.getY()-30)/(Settings.getResolution().height/15);
+        int col = (mouseEvent.getX()-7)/(Settings.getResolution().width/15);
+        Coordinates coordinates = new Coordinates(row, col);
+        if(game.getBoard().areEmpty(coordinates)) {
+            boardCellClick(coordinates);
+            if(isSingle_Player && !game.check_victory(game.getOther_player().getGraph())) {
                 boardCellClick(AI_Logic.chooseRandomCoordinates(game.getBoard()));
             }
-            if(Controller.check_victory(game.getOther_player().getGraph())){
+            if(game.check_victory(game.getOther_player().getGraph())){
                 new VictoryFrame(game.getOther_player().getName(), board);
                 board.setEnabled(false);
             }

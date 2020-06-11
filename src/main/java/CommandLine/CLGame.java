@@ -4,8 +4,6 @@ import Data.Coordinates;
 import Data.Game;
 import Data.Player;
 import Logic.AI_Logic;
-import Logic.Controller;
-import Logic.GameFlow;
 
 public class CLGame extends Game implements OutputInterface {
 
@@ -24,7 +22,15 @@ public class CLGame extends Game implements OutputInterface {
         Coordinates coordinates;
 
         while (!victory){
-            if(getCurrent_player().isHuman()) coordinates = human_turn(playerInputHandler);
+            if(getCurrent_player().isHuman()){
+                String input_move = getPlayerMove(playerInputHandler);
+                if(input_move.equals("res")){
+                    printResignedMessage(getCurrent_player().getName());
+                    break;
+                } else {
+                    coordinates = new Coordinates(15 - Integer.parseInt(input_move.substring(1)), input_move.charAt(0) - 'a');
+                }
+            }
             else coordinates = AI_Logic.chooseRandomCoordinates(board);
             increaseMoveCounter();
 
@@ -45,7 +51,7 @@ public class CLGame extends Game implements OutputInterface {
             }
 
             if(move_counter >= 28){
-                victory = Controller.check_victory(getCurrent_player().getGraph());
+                victory = check_victory(getCurrent_player().getGraph());
             }
 
             getCurrent_player().switchPlayer(getOther_player());

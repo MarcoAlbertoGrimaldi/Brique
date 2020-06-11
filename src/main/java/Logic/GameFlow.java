@@ -16,21 +16,24 @@ public interface GameFlow {
         p1.swapGraphs(p2);
     }
 
-    default Coordinates human_turn(PlayerInputHandler playerInputHandler){
-        Coordinates coordinates;
+    default String getPlayerMove(PlayerInputHandler playerInputHandler){
+        String input;
         while(true) {
-            String input = playerInputHandler.getInput(playerInputHandler.getCoordinate_request_msg(), playerInputHandler.getCoordinate_err_msg(), playerInputHandler.getCoordinate_pattern());
-            coordinates = new Coordinates(input.charAt(0) - 'a', 15 - Integer.parseInt(input.substring(1)));
-            if (!coordinates.areValid()) {
-                System.out.println("Position already occupied, insert again");
-            } else break;
+            input = playerInputHandler.getInput(playerInputHandler.getCoordinate_request_msg(), playerInputHandler.getCoordinate_err_msg(), playerInputHandler.getCoordinate_pattern());
+            if (input.equals("res")) return input;
+            else {
+                Coordinates coordinates = new Coordinates(input.charAt(0) - 'a', 15 - Integer.parseInt(input.substring(1)));
+                if (!coordinates.areValid()) {
+                    System.out.println("Position already occupied, insert again");
+                } else break;
+            }
         }
-        return coordinates;
+        return input;
     }
 
     default ArrayList<Coordinates> make_move(Board board, Coordinates coordinates, Player current, Player other) {
         board.getCell(coordinates).setState(current.getControl().toState());
-        ArrayList<Coordinates> escorts = Rules.escort_rules(board, coordinates, current.getControl().toState());
+        ArrayList<Coordinates> escorts = EscortRule.escort_rules(board, coordinates, current.getControl().toState());
         current.getGraph().update_graph(coordinates, board);
         for (Coordinates escort : escorts) {
             current.getGraph().update_graph(escort, board);

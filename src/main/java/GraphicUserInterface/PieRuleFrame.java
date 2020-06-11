@@ -1,9 +1,7 @@
 package GraphicUserInterface;
 
 import Logic.AI_Logic;
-import Logic.Controller;
 import Data.Game;
-import Logic.Rules;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,11 +25,10 @@ public class PieRuleFrame {
         pieRule.add(yes);
 
         yes.addActionListener(actionEvent -> {
-            Rules.apply_pie_rule(game);
+            game.apply_pie_rule(game.getCurrent_player(), game.getOther_player());
             game.setPieRule(true);
-            game.getCurrent_player().swapControl(game.getOther_player());
 
-            if(!boardFrame.isSingle_Player) boardFrame.boardCellClick(AI_Logic.chooseRandomCoordinates(game.getBoard()));
+            if(boardFrame.isSingle_Player) boardFrame.boardCellClick(AI_Logic.chooseRandomCoordinates(game.getBoard()));
             boardFrame.setEnabled(true);
             pieRule.dispose();
         });
@@ -50,7 +47,6 @@ public class PieRuleFrame {
         pieRule.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent windowEvent) {
-
             }
 
             @Override
@@ -65,17 +61,14 @@ public class PieRuleFrame {
 
             @Override
             public void windowIconified(WindowEvent windowEvent) {
-
             }
 
             @Override
             public void windowDeiconified(WindowEvent windowEvent) {
-
             }
 
             @Override
             public void windowActivated(WindowEvent windowEvent) {
-
             }
 
             @Override
