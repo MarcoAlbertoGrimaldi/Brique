@@ -22,9 +22,7 @@ public class Game implements GameFlow {
     public void play() {
     }
 
-    public boolean isSinglePlayer() {
-        return isSinglePlayer;
-    }
+
 
     public void setPieRule(boolean pieRule) {
         this.pieRule = pieRule;
