@@ -2,12 +2,12 @@ package CommandLine;
 
 public class PlayerInputHandler implements InputInterface {
 
-    String player_request_msg = "Type you nickname:";
+    String player_request_msg = "Type your nickname:";
     String player_err_msg = "Unexpected error";
-    String player_pattern = "\\w";
+    String player_pattern = "\\w+";
 
     String pie_rule_request_msg = "If you want to apply the pie rule, type '1'; otherwise type '0'.";
-    String pie_rule_err_msg = "Please type '0' or '1'.";
+    String pie_rule_err_msg = "Please type '0' or '1':";
     String pie_rule_pattern = "[0-1]";
 
     String coordinate_request_msg = "Insert coordinates or type 'res' to resign:";
