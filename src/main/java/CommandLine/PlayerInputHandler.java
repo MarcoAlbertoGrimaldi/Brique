@@ -2,7 +2,7 @@ package CommandLine;
 
 public class PlayerInputHandler implements InputInterface {
 
-    String player_request_msg = "Type your nickname:";
+    String player_request_msg = "Type your nickname (using alphanumeric and undescore characters only):";
     String player_err_msg = "Unexpected error";
     String player_pattern = "\\w+";
 
