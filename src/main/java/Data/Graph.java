@@ -59,7 +59,7 @@ public class Graph {
         while (queue.size() != 0) {
             s = queue.poll();
             i = adjacencyList.get(s).listIterator();
-            int next = 0;
+            int next;
             while (i.hasNext()) {
                 next = i.next();
                 if (next == d) {
@@ -82,7 +82,7 @@ public class Graph {
     }
 
     public void restore_graph(Coordinates coordinates, Board board){
-        ArrayList<Coordinates> opponents = find_neighbours(coordinates, this.pieceColor, board);
+        ArrayList<Coordinates> opponents = find_opponents(coordinates, this.pieceColor, board);
         for(Coordinates x: opponents){
             if (pathFound(coordsToInt(coordinates), coordsToInt(x))){
                 rmvEdge(coordinates,x);
@@ -94,7 +94,7 @@ public class Graph {
 
         State state = pieceColor.toState();
 
-        ArrayList<Coordinates> neighbours = new ArrayList<Coordinates>();
+        ArrayList<Coordinates> neighbours = new ArrayList<>();
         int row = coordinates.getRow();
         int col = coordinates.getCol();
 
@@ -106,4 +106,19 @@ public class Graph {
         return neighbours;
     }
 
+    ArrayList<Coordinates> find_opponents(Coordinates coordinates, PieceColor pieceColor, Board board) {
+
+        State state = pieceColor.toState();
+
+        ArrayList<Coordinates> opponents = new ArrayList<>();
+        int row = coordinates.getRow();
+        int col = coordinates.getCol();
+
+        new ArrayList<>(Arrays.asList(-1, 1)).forEach(i->{if(new Coordinates(row + i, col).areValid() && board.getCell(row + i, col).getState() == state){
+            opponents.add(new Coordinates(row + i, col));}});
+        new ArrayList<>(Arrays.asList(-1, 1)).forEach(i->{if(new Coordinates(row , col+i).areValid() && board.getCell(row , col+i).getState() == state){
+            opponents.add(new Coordinates(row, col+i));}});
+
+        return opponents;
+    }
 }

@@ -4,9 +4,14 @@ import Data.*;
 
 import java.util.ArrayList;
 
-public class EscortRule {
+public interface Rules {
+    default void apply_pie_rule(Player p1, Player p2) {
+        p1.swapControl(p2);
+        p1.swapGraphs(p2);
+        p1.switchPlayer(p2);
+    }
 
-    public static ArrayList<Coordinates> escort_rules(Board board, Coordinates c, State piece) {
+    default ArrayList<Coordinates> escort_rules(Board board, Coordinates c, State piece) {
         Cell cell = board.getCell(c);
         ArrayList<Coordinates> escorts = new ArrayList<>();
         ArrayList<Cell> escort_of = get_escorts(board, c);
@@ -23,7 +28,7 @@ public class EscortRule {
         return escorts;
     }
 
-    private static Cell extract_specific_cell(Board board, int i, int j) {
+    private Cell extract_specific_cell(Board board, int i, int j) {
         Coordinates esc1 = new Coordinates(i, j);
         if (esc1.areValid()) {
             return board.getCell(esc1);
@@ -33,7 +38,7 @@ public class EscortRule {
     }
 
 
-    public static ArrayList<Cell> get_escorts(Board board, Coordinates c) {
+    default ArrayList<Cell> get_escorts(Board board, Coordinates c) {
         ArrayList<Cell> res = new ArrayList<>();
         Cell cell = board.getCell(c);
         if (cell.getPieceColor() == PieceColor.WHITE) {
@@ -49,4 +54,6 @@ public class EscortRule {
         }
         return res;
     }
+
 }
+

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 
-public class EscortRuleTest {
+public class EscortRuleTest implements GameFlow{
 
     @Test
     public void Check_pieRule() {
@@ -25,10 +25,10 @@ public class EscortRuleTest {
     @Test
     public void check_get_escorts(){
         Coordinates white_c = new Coordinates(1,3);
-        ArrayList<Cell> white_escorts = EscortRule.get_escorts(new Board() ,white_c);
+        ArrayList<Cell> white_escorts = get_escorts(new Board() ,white_c);
         check_coordinates(white_escorts,0,3,1,2);
         Coordinates black_c = new Coordinates(1,4);
-        ArrayList<Cell> black_escorts = EscortRule.get_escorts(new Board(), black_c);
+        ArrayList<Cell> black_escorts = get_escorts(new Board(), black_c);
         check_coordinates(black_escorts,2,4,1,5);
     }
 
@@ -63,7 +63,7 @@ public class EscortRuleTest {
 
     public void modify_board(Board board,Coordinates c ,Coordinates c2, State state){
         board.getCell(c2).setState(state);
-        ArrayList<Coordinates> x = EscortRule.escort_rules(board, c, state);
+        ArrayList<Coordinates> x = escort_rules(board, c, state);
     }
 
 

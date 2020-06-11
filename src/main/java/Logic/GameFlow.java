@@ -5,15 +5,10 @@ import Data.*;
 
 import java.util.ArrayList;
 
-public interface GameFlow {
+public interface GameFlow extends Rules {
 
     default boolean check_victory(Graph graph) {
         return graph.pathFound(225, 226);
-    }
-
-    default void apply_pie_rule(Player p1, Player p2) {
-        p1.swapControl(p2);
-        p1.swapGraphs(p2);
     }
 
     default String getPlayerMove(PlayerInputHandler playerInputHandler){
@@ -33,7 +28,7 @@ public interface GameFlow {
 
     default ArrayList<Coordinates> make_move(Board board, Coordinates coordinates, Player current, Player other) {
         board.getCell(coordinates).setState(current.getControl().toState());
-        ArrayList<Coordinates> escorts = EscortRule.escort_rules(board, coordinates, current.getControl().toState());
+        ArrayList<Coordinates> escorts = escort_rules(board, coordinates, current.getControl().toState());
         current.getGraph().update_graph(coordinates, board);
         for (Coordinates escort : escorts) {
             current.getGraph().update_graph(escort, board);

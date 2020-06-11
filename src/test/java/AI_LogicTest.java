@@ -2,7 +2,6 @@ import Data.Board;
 import Data.Coordinates;
 import Logic.*;
 import org.junit.Test;
-import org.junit.Assert;
 
 import static junit.framework.TestCase.assertTrue;
 

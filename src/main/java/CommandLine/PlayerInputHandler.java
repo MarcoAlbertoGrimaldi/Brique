@@ -2,17 +2,17 @@ package CommandLine;
 
 public class PlayerInputHandler implements InputInterface {
 
-    String player_request_msg = "Type your nickname (using alphanumeric and undescore characters only):";
-    String player_err_msg = "This nickname is not valid. Try another one:";
-    String player_pattern = "\\w+";
+    final String player_request_msg = "Type you nickname:";
+    final String player_err_msg = "This nickname is not valid. Try another one:";
+    final String player_pattern = "\\w+";
 
-    String pie_rule_request_msg = "If you want to apply the pie rule, type '1'; otherwise type '0'.";
-    String pie_rule_err_msg = "Not valid. Please type '0' or '1':";
-    String pie_rule_pattern = "[0-1]";
+    final String pie_rule_request_msg = "If you want to apply the pie rule, type '1'; otherwise type '0'.";
+    final String pie_rule_err_msg = "Not valid. Please type '0' or '1':";
+    final String pie_rule_pattern = "[0-1]";
 
     String coordinate_request_msg = "Insert valid coordinates or type 'res' to resign:";
     String coordinate_err_msg = "Not valid. Please insert again (a-o and 1-15, e.g. f3) or type 'res' to resign:";
-    String coordinate_pattern = "[a-o][1-9]|[a-o]1[0-5]|res";
+    final String coordinate_pattern = "[a-o][1-9]|[a-o]1[0-5]|res";
 
     public String getPlayer_request_msg() {
         return player_request_msg;
@@ -24,18 +24,6 @@ public class PlayerInputHandler implements InputInterface {
 
     public String getPlayer_pattern() {
         return player_pattern;
-    }
-
-    public String getPie_rule_request_msg() {
-        return pie_rule_request_msg;
-    }
-
-    public String getPie_rule_err_msg() {
-        return pie_rule_err_msg;
-    }
-
-    public String getPie_rule_pattern() {
-        return pie_rule_pattern;
     }
 
     public String getCoordinate_request_msg() {

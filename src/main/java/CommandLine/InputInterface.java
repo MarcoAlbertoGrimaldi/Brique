@@ -23,9 +23,11 @@ public interface InputInterface {
         return input;
     }
 
-    default void notValid(){
-        System.out.println("Not valid, default unknown reason.");
-    }
+// --Commented out by Inspection START (11/06/2020 10:05):
+//    default void notValid(){
+//        System.out.println("Not valid, default unknown reason.");
+//    }
+// --Commented out by Inspection STOP (11/06/2020 10:05)
 
     default void notValid(String error){
         System.out.println(error);

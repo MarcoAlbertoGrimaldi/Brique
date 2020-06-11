@@ -10,12 +10,16 @@ import java.awt.event.WindowListener;
 
 public class SettingsFrame extends JFrame {
 
-    JFrame settingsFrame;
-    JTextField player1TextField, player2TextField;
-    JComboBox<String> resolutionBox;
-    JButton cancel, def, confirm;
-    JRadioButton black, white;
-    ButtonGroup humColour;
+    final JFrame settingsFrame;
+    final JTextField player1TextField;
+    final JTextField player2TextField;
+    final JComboBox<String> resolutionBox;
+    final JButton cancel;
+    final JButton def;
+    final JButton confirm;
+    final JRadioButton black;
+    final JRadioButton white;
+    final ButtonGroup humColour;
 
     SettingsFrame(){
         settingsFrame = new JFrame("Settings");

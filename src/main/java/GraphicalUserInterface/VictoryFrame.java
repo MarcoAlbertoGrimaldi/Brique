@@ -7,7 +7,7 @@ import java.awt.event.WindowListener;
 
 public class VictoryFrame {
 
-    JButton exitButton;
+    final JButton exitButton;
 
     public VictoryFrame(String name, JFrame board) {
         JFrame victory = new JFrame("Victory!");
