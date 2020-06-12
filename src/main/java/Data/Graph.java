@@ -43,7 +43,7 @@ public class Graph {
         adjacencyList.get(w.getRow() * 15 + w.getCol()).remove(adjacencyList.get(w.getRow() * 15 + w.getCol()).indexOf(v.getRow() * 15 + v.getCol()));
     }
 
-    int coordsToInt(Coordinates coordinates){
+    int coordinatesToInt(Coordinates coordinates){
         return coordinates.getRow() * 15 + coordinates.getCol();
     }
 
@@ -84,7 +84,7 @@ public class Graph {
     public void restore_graph(Coordinates coordinates, Board board){
         ArrayList<Coordinates> opponents = find_opponents(coordinates, this.pieceColor, board);
         for(Coordinates x: opponents){
-            if (pathFound(coordsToInt(coordinates), coordsToInt(x))){
+            if (pathFound(coordinatesToInt(coordinates), coordinatesToInt(x))){
                 rmvEdge(coordinates,x);
             }
         }

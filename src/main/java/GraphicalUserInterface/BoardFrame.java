@@ -34,11 +34,11 @@ public class BoardFrame extends JFrame implements MouseListener {
 
         if (isSingle_Player){
             board = new JFrame(player1Name + " VS. AI!");
-            game = new Game(new Player(Settings.getPlayer1PieceColor(), player1Name), new Player(Settings.getPlayer2PieceColor()), true);
+            game = new Game(new Player(Settings.getPlayer1PieceColor(), player1Name), new Player(Settings.getPlayer2PieceColor()));
 
         } else {
             board = new JFrame(player1Name + " VS. " + player2Name + "!");
-            game = new Game(new Player(PieceColor.BLACK, player1Name), new Player(PieceColor.WHITE, player2Name), false);
+            game = new Game(new Player(PieceColor.BLACK, player1Name), new Player(PieceColor.WHITE, player2Name));
         }
 
         dimension.setSize(dimension.width + 14, dimension.height + 37);
