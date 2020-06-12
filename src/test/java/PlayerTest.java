@@ -32,4 +32,14 @@ public class PlayerTest {
     }
 
 
+
+    @Test
+    public void check_switchPlayer(){
+        Player player1 = new Player(PieceColor.BLACK, "Human");
+        Player player2 = new Player(PieceColor.WHITE, "Human_2");
+        player1.switchPlayer(player2);
+        Assert.assertEquals(player1.isCurrent(),false);
+    }
+
+
 }
