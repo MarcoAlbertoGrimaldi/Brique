@@ -2,9 +2,16 @@ package CommandLine;
 
 import Data.Board;
 import Data.Coordinates;
+import Data.Player;
 import Data.State;
 
 public interface OutputInterface {
+
+
+
+    default void printCurrentPlayer(Player player){
+        System.out.println(player.getName()+"'s turn.\n");
+    }
 
     default void printMove(String counter, String name, String control){
         System.out.print("Move #" + counter + " (" + name + "-" + control + ")");

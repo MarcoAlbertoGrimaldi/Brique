@@ -1,9 +1,8 @@
 import CommandLine.*;
 import Data.PieceColor;
 import Data.Player;
-import Logic.LaunchGame;
 
-public class BriqueCL implements LaunchGame {
+public class BriqueCL{
 
     boolean exit = false;
 
