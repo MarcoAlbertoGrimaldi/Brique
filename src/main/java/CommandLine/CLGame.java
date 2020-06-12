@@ -20,7 +20,6 @@ public class CLGame extends Game implements OutputInterface {
         if(getCurrent_player().isHuman()) printBoard(getBoard());
         boolean victory = false;
         Coordinates coordinates;
-
         while (!victory){
             if(getCurrent_player().isHuman()){
                 printCurrentPlayer(getCurrent_player());
@@ -37,7 +36,6 @@ public class CLGame extends Game implements OutputInterface {
             }
             increaseMoveCounter();
             make_move(board, coordinates, getCurrent_player(), getOther_player());
-
             if(move_counter==1 && getOther_player().isHuman()){
                 printBoard(board);
                 String pie_rule = playerInputHandler.getInput(playerInputHandler.pie_rule_request_msg, playerInputHandler.pie_rule_err_msg, playerInputHandler.pie_rule_pattern);
@@ -46,14 +44,11 @@ public class CLGame extends Game implements OutputInterface {
                     apply_pie_rule(player_1, player_2);
                 }
             }
-
             printMove(String.valueOf(move_counter), getCurrent_player().getName(), getCurrent_player().getControl().toString());
             printBoard(board);
-
             if(move_counter >= 28){
                 victory = check_victory(getCurrent_player().getGraph());
             }
-
             getCurrent_player().switchPlayer(getOther_player());
         }
         getCurrent_player().switchPlayer(getOther_player());
