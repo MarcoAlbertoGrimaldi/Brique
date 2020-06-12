@@ -9,15 +9,6 @@ import static org.junit.Assert.*;
 public class GameTest {
 
 
-    @Test
-    public void Check_pieRule() {
-        Player p1 = new Player(PieceColor.BLACK, "p1");
-        Player p2 = new Player( PieceColor.WHITE, "p2");
-        Game game = new Game(p1,p2);
-        game.apply_pie_rule(p1, p2);
-        Assert.assertEquals(p1.getControl(), PieceColor.WHITE);
-        Assert.assertEquals(p2.getControl(), PieceColor.BLACK);
-    }
 
 
 

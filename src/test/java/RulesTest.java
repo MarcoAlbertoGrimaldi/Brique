@@ -1,5 +1,3 @@
-
-
 import Data.*;
 import Logic.*;
 import org.junit.Test;
@@ -9,7 +7,7 @@ import java.util.ArrayList;
 
 
 
-public class EscortRuleTest implements GameFlow{
+public class RulesTest implements GameFlow{
 
     @Test
     public void Check_pieRule() {
