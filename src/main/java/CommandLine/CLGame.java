@@ -40,6 +40,7 @@ public class CLGame extends Game implements OutputInterface {
             make_move(board, coordinates, getCurrent_player(), getOther_player());
 
             if(move_counter==1 && getOther_player().isHuman()){
+
                 String pie_rule = playerInputHandler.getInput(playerInputHandler.pie_rule_request_msg, playerInputHandler.pie_rule_err_msg, playerInputHandler.pie_rule_pattern);
                 if(pie_rule.equals("1")) {
                     pieRule = true;
