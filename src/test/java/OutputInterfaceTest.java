@@ -12,7 +12,6 @@ public class OutputInterfaceTest implements OutputInterface {
         board.getCell(new Coordinates(0,8)).setState(State.W_PIECE);
         board.getCell(new Coordinates(10,8)).setState(State.W_PIECE);
         board.getCell(new Coordinates(14,14)).setState(State.B_PIECE);
-
         printBoard(board);
     }
 
@@ -21,9 +20,4 @@ public class OutputInterfaceTest implements OutputInterface {
     public void testprintMove(){
         printMove("1","giacomo","white");
     }
-
-
-
-
-
 }
