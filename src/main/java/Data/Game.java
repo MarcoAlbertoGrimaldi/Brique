@@ -5,7 +5,6 @@ import Logic.GameFlow;
 public class Game implements GameFlow {
 
     protected final Player player_1;
-
     protected final Player player_2;
     protected final Board board;
     protected boolean pieRule = false;
