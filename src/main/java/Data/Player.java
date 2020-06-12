@@ -7,7 +7,7 @@ public class Player {
     private String name = "AI";
     private Graph graph;
     private boolean current = false;
-    private boolean resigned = false;
+    private final boolean resigned = false;
 
     public Player(PieceColor control){
         this.control = control;

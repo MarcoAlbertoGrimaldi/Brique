@@ -21,18 +21,18 @@ public class BriqueCL{
             switch(input) {
                 case "0":
                     p1_name = getName(playerInputHandler);
-                    game = new CLGame(new Player(PieceColor.BLACK, p1_name), new Player(PieceColor.WHITE), true);
+                    game = new CLGame(new Player(PieceColor.BLACK, p1_name), new Player(PieceColor.WHITE));
                     game.play();
                     break;
                 case "1":
                     p1_name = getName(playerInputHandler);
-                    game = new CLGame(new Player(PieceColor.BLACK), new Player(PieceColor.WHITE, p1_name), true);
+                    game = new CLGame(new Player(PieceColor.BLACK), new Player(PieceColor.WHITE, p1_name));
                     game.play();
                     break;
                 case "2":
                     p1_name = getName(playerInputHandler);
                     p2_name = getName(playerInputHandler);
-                    game = new CLGame(new Player(PieceColor.BLACK, p1_name), new Player(PieceColor.WHITE, p2_name), false);
+                    game = new CLGame(new Player(PieceColor.BLACK, p1_name), new Player(PieceColor.WHITE, p2_name));
                     game.play();
                     break;
                 case  "3":

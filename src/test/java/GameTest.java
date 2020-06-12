@@ -13,7 +13,7 @@ public class GameTest {
     public void Check_pieRule() {
         Player p1 = new Player(PieceColor.BLACK, "p1");
         Player p2 = new Player( PieceColor.WHITE, "p2");
-        Game game = new Game(p1,p2,true);
+        Game game = new Game(p1,p2);
         game.apply_pie_rule(p1, p2);
         Assert.assertEquals(p1.getControl(), PieceColor.WHITE);
         Assert.assertEquals(p2.getControl(), PieceColor.BLACK);
@@ -31,7 +31,7 @@ public class GameTest {
 
 
     private void check_cell_init(Player player_1, Player player_2) {
-        Game game = new Game(player_1,player_2, false);
+        Game game = new Game(player_1,player_2);
         assertTrue(game.getPlayer_1().isHuman());
         assertFalse(game.getPlayer_2().isHuman());
         assertEquals(game.getPlayer_1().getControl(), PieceColor.BLACK);

@@ -9,8 +9,8 @@ public class CLGame extends Game implements OutputInterface {
 
     private final PlayerInputHandler playerInputHandler;
 
-    public CLGame(Player player_1, Player player_2, boolean isSinglePlayer) {
-        super(player_1, player_2, isSinglePlayer);
+    public CLGame(Player player_1, Player player_2) {
+        super(player_1, player_2);
         playerInputHandler = new PlayerInputHandler();
     }
 

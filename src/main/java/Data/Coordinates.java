@@ -30,15 +30,6 @@ public class Coordinates {
 
     @Override
     public String toString() {
-        return (char)(col + 97) + String.valueOf(15-row);
+        return (char) (col + 97) + String.valueOf(15 - row);
     }
-
-
-
-// --Commented out by Inspection START (11/06/2020 10:06):
-//    public void setCoordinates(int r, int c) {
-//        row = r;
-//        col = c;
-//    }
-// --Commented out by Inspection STOP (11/06/2020 10:06)
 }
